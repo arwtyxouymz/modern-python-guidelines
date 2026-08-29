@@ -1,0 +1,2554 @@
+{
+  "include_preview": false,
+  "profile": "modern",
+  "ruff_version": "0.16.5",
+  "rule_prefixes": [
+    "UP",
+    "FURB",
+    "SIM",
+    "C4",
+    "PIE",
+    "PTH",
+    "FLY",
+    "PERF",
+    "F401"
+  ],
+  "rules": [
+    {
+      "category": "complexity",
+      "code": "C400",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-generator-list",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.61"
+        }
+      },
+      "summary": "Unnecessary generator (rewrite using `list()`)"
+    },
+    {
+      "category": "complexity",
+      "code": "C401",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-generator-set",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.61"
+        }
+      },
+      "summary": "Unnecessary generator (rewrite using `set()`)"
+    },
+    {
+      "category": "complexity",
+      "code": "C402",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-generator-dict",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.61"
+        }
+      },
+      "summary": "Unnecessary generator (rewrite as a dict comprehension)"
+    },
+    {
+      "category": "complexity",
+      "code": "C403",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-list-comprehension-set",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.58"
+        }
+      },
+      "summary": "Unnecessary list comprehension (rewrite as a set comprehension)"
+    },
+    {
+      "category": "complexity",
+      "code": "C404",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-list-comprehension-dict",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.58"
+        }
+      },
+      "summary": "Unnecessary list comprehension (rewrite as a dict comprehension)"
+    },
+    {
+      "category": "complexity",
+      "code": "C405",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-literal-set",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.61"
+        }
+      },
+      "summary": "Unnecessary {kind} literal (rewrite as a set literal)"
+    },
+    {
+      "category": "complexity",
+      "code": "C406",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-literal-dict",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.61"
+        }
+      },
+      "summary": "Unnecessary {obj_type} literal (rewrite as a dict literal)"
+    },
+    {
+      "category": "complexity",
+      "code": "C408",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-collection-call",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.61"
+        }
+      },
+      "summary": "Unnecessary `{kind}()` call (rewrite as a literal)"
+    },
+    {
+      "category": "complexity",
+      "code": "C409",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-literal-within-tuple-call",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.66"
+        }
+      },
+      "summary": "Unnecessary list literal passed to `tuple()` (rewrite as a tuple literal)"
+    },
+    {
+      "category": "complexity",
+      "code": "C410",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-literal-within-list-call",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.66"
+        }
+      },
+      "summary": "Unnecessary list literal passed to `list()` (remove the outer call to `list()`)"
+    },
+    {
+      "category": "complexity",
+      "code": "C411",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-list-call",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.73"
+        }
+      },
+      "summary": "Unnecessary `list()` call (remove the outer call to `list()`)"
+    },
+    {
+      "category": "complexity",
+      "code": "C413",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-call-around-sorted",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.73"
+        }
+      },
+      "summary": "Unnecessary `{func}()` call around `sorted()`"
+    },
+    {
+      "category": "complexity",
+      "code": "C414",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-double-cast-or-process",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.70"
+        }
+      },
+      "summary": "Unnecessary `{inner}()` call within `{outer}()`"
+    },
+    {
+      "category": "complexity",
+      "code": "C415",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-subscript-reversal",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.64"
+        }
+      },
+      "summary": "Unnecessary subscript reversal of iterable within `{func}()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "C416",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-comprehension",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.73"
+        }
+      },
+      "summary": "Unnecessary {kind} comprehension (rewrite using `{kind}()`)"
+    },
+    {
+      "category": "complexity",
+      "code": "C417",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-map",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.74"
+        }
+      },
+      "summary": "Unnecessary `map()` usage (rewrite using a {object_type})"
+    },
+    {
+      "category": "complexity",
+      "code": "C418",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-literal-within-dict-call",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.262"
+        }
+      },
+      "summary": "Unnecessary dict {kind} passed to `dict()` (remove the outer call to `dict()`)"
+    },
+    {
+      "category": "complexity",
+      "code": "C419",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-comprehension-in-call",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.262"
+        }
+      },
+      "summary": "Unnecessary list comprehension"
+    },
+    {
+      "category": "complexity",
+      "code": "C420",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-comprehensions",
+      "name": "unnecessary-dict-comprehension-for-iterable",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.10.0"
+        }
+      },
+      "summary": "Unnecessary dict comprehension for iterable; use `dict.fromkeys` instead"
+    },
+    {
+      "category": "suspicious",
+      "code": "F401",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "Pyflakes",
+      "name": "unused-import",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.18"
+        }
+      },
+      "summary": "`{name}` imported but unused; consider using `importlib.util.find_spec` to test for availability"
+    },
+    {
+      "category": "complexity",
+      "code": "FLY002",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flynt",
+      "name": "static-join-to-f-string",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.266"
+        }
+      },
+      "summary": "Consider `{expression}` instead of string join"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB105",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "print-empty-string",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Unnecessary empty string passed to `print`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB110",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "if-exp-instead-of-or-operator",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.15.0"
+        }
+      },
+      "summary": "Replace ternary `if` expression with `or` operator"
+    },
+    {
+      "category": "pedantic",
+      "code": "FURB116",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "refurb",
+      "name": "f-string-number-format",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.13.0"
+        }
+      },
+      "summary": "Replace `{function_name}` call with `{display}`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB122",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "for-loop-writes",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Use of `{}.write` in a for loop"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB129",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "readlines-in-for",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Instead of calling `readlines()`, iterate over file object directly"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB132",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "check-and-remove-from-set",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Use `{suggestion}` instead of check and `remove`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB136",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "refurb",
+      "name": "if-expr-min-max",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Replace `if` expression with `{min_max}` call"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB157",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "verbose-decimal-constructor",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Verbose expression in `Decimal` constructor"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB161",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "bit-count",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Use of `bin({existing}).count('1')`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB162",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "fromisoformat-replace-z",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Unnecessary timezone replacement with zero offset"
+    },
+    {
+      "category": "correctness",
+      "code": "FURB163",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "refurb",
+      "name": "redundant-log-base",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Prefer `math.{log_function}({arg})` over `math.log` with a redundant base"
+    },
+    {
+      "category": "pedantic",
+      "code": "FURB164",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "refurb",
+      "name": "unnecessary-from-float",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.16.0"
+        }
+      },
+      "summary": "Verbose method `{method_name}` in `{constructor}` construction"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB166",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "int-on-sliced-str",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Use of `int` with explicit `base={base}` after removing prefix"
+    },
+    {
+      "category": "style",
+      "code": "FURB167",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "regex-flag-alias",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Use of regular expression alias `re.{}`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB168",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "isinstance-type-none",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Prefer `is` operator over `isinstance` to check if an object is `None`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB169",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "type-none-comparison",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "When checking against `None`, use `{}` instead of comparison with `type(None)`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB171",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "single-item-membership-test",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.15.0"
+        }
+      },
+      "summary": "Membership test against single-item container"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB177",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "refurb",
+      "name": "implicit-cwd",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Prefer `Path.cwd()` over `Path().resolve()` for current-directory lookups"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB181",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "refurb",
+      "name": "hashlib-digest-hex",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Use of hashlib's `.digest().hex()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "FURB187",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "list-reverse-copy",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Use of assignment of `reversed` on list `{name}`"
+    },
+    {
+      "category": "complexity",
+      "code": "FURB188",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "refurb",
+      "name": "slice-to-remove-prefix-or-suffix",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.9.0"
+        }
+      },
+      "summary": "Prefer `str.removeprefix()` over conditionally replacing with slice."
+    },
+    {
+      "category": "complexity",
+      "code": "FURB192",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "refurb",
+      "name": "sorted-min-max",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.16.0"
+        }
+      },
+      "summary": "Prefer `min` over `sorted()` to compute the minimum value in a sequence"
+    },
+    {
+      "category": "performance",
+      "code": "PERF101",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "Perflint",
+      "name": "unnecessary-list-cast",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.276"
+        }
+      },
+      "summary": "Do not cast an iterable to `list` before iterating over it"
+    },
+    {
+      "category": "complexity",
+      "code": "PERF102",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "Perflint",
+      "name": "incorrect-dict-iterator",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.273"
+        }
+      },
+      "summary": "When using only the {subset} of a dict use the `{subset}()` method"
+    },
+    {
+      "category": "pedantic",
+      "code": "PERF203",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "Perflint",
+      "name": "try-except-in-loop",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.276"
+        }
+      },
+      "summary": "`try`-`except` within a loop incurs performance overhead"
+    },
+    {
+      "category": "pedantic",
+      "code": "PERF401",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "Perflint",
+      "name": "manual-list-comprehension",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.276"
+        }
+      },
+      "summary": "Use {message_str} to create a transformed list"
+    },
+    {
+      "category": "complexity",
+      "code": "PERF402",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "Perflint",
+      "name": "manual-list-copy",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.276"
+        }
+      },
+      "summary": "Use `list` or `list.copy` to create a copy of a list"
+    },
+    {
+      "category": "pedantic",
+      "code": "PERF403",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "Perflint",
+      "name": "manual-dict-comprehension",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.5.0"
+        }
+      },
+      "summary": "Use a dictionary comprehension instead of {modifier} for-loop"
+    },
+    {
+      "category": "style",
+      "code": "PIE790",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-pie",
+      "name": "unnecessary-placeholder",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.208"
+        }
+      },
+      "summary": "Unnecessary `pass` statement"
+    },
+    {
+      "category": "correctness",
+      "code": "PIE794",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-pie",
+      "name": "duplicate-class-field-definition",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.208"
+        }
+      },
+      "summary": "Class field `{name}` is defined multiple times"
+    },
+    {
+      "category": "suspicious",
+      "code": "PIE796",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-pie",
+      "name": "non-unique-enums",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.224"
+        }
+      },
+      "summary": "Enum contains duplicate value: `{value}`"
+    },
+    {
+      "category": "complexity",
+      "code": "PIE800",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-pie",
+      "name": "unnecessary-spread",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "Unnecessary spread `**`"
+    },
+    {
+      "category": "style",
+      "code": "PIE804",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-pie",
+      "name": "unnecessary-dict-kwargs",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "Unnecessary `dict` kwargs"
+    },
+    {
+      "category": "complexity",
+      "code": "PIE807",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-pie",
+      "name": "reimplemented-container-builtin",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.208"
+        }
+      },
+      "summary": "Prefer `{container}` over useless lambda"
+    },
+    {
+      "category": "complexity",
+      "code": "PIE808",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-pie",
+      "name": "unnecessary-range-start",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.286"
+        }
+      },
+      "summary": "Unnecessary `start` argument in `range`"
+    },
+    {
+      "category": "complexity",
+      "code": "PIE810",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-pie",
+      "name": "multiple-starts-ends-with",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.243"
+        }
+      },
+      "summary": "Call `{attr}` once with a `tuple`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH100",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-abspath",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.abspath()` should be replaced by `Path.resolve()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH101",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-chmod",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.chmod()` should be replaced by `Path.chmod()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH102",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-mkdir",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.mkdir()` should be replaced by `Path.mkdir()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH103",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-makedirs",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.makedirs()` should be replaced by `Path.mkdir(parents=True)`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH104",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-rename",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.rename()` should be replaced by `Path.rename()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH105",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-replace",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.replace()` should be replaced by `Path.replace()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH106",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-rmdir",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.rmdir()` should be replaced by `Path.rmdir()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH107",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-remove",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.remove()` should be replaced by `Path.unlink()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH108",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-unlink",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.unlink()` should be replaced by `Path.unlink()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH109",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-getcwd",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.getcwd()` should be replaced by `Path.cwd()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH110",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-exists",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.exists()` should be replaced by `Path.exists()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH111",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-expanduser",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.expanduser()` should be replaced by `Path.expanduser()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH112",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-isdir",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.isdir()` should be replaced by `Path.is_dir()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH113",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-isfile",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.isfile()` should be replaced by `Path.is_file()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH114",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-islink",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.islink()` should be replaced by `Path.is_symlink()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH115",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-readlink",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.readlink()` should be replaced by `Path.readlink()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH116",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-stat",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.stat()` should be replaced by `Path.stat()`, `Path.owner()`, or `Path.group()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH117",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-isabs",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.isabs()` should be replaced by `Path.is_absolute()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH118",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-join",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.{module}.join()` should be replaced by `Path` with `/` operator"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH119",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-basename",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.basename()` should be replaced by `Path.name`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH120",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-dirname",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.dirname()` should be replaced by `Path.parent`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH121",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-samefile",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.samefile()` should be replaced by `Path.samefile()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH122",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-splitext",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`os.path.splitext()` should be replaced by `Path.suffix`, `Path.stem`, and `Path.parent`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH123",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "builtin-open",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`open()` should be replaced by `Path.open()`"
+    },
+    {
+      "category": "suspicious",
+      "code": "PTH124",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-use-pathlib",
+      "name": "py-path",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.231"
+        }
+      },
+      "summary": "`py.path` is in maintenance mode, use `pathlib` instead"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH201",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-use-pathlib",
+      "name": "path-constructor-current-directory",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.279"
+        }
+      },
+      "summary": "Do not pass the current directory explicitly to `Path`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH202",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-getsize",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.279"
+        }
+      },
+      "summary": "`os.path.getsize` should be replaced by `Path.stat().st_size`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH203",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-getatime",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.279"
+        }
+      },
+      "summary": "`os.path.getatime` should be replaced by `Path.stat().st_atime`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH204",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-getmtime",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.279"
+        }
+      },
+      "summary": "`os.path.getmtime` should be replaced by `Path.stat().st_mtime`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH205",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-path-getctime",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.279"
+        }
+      },
+      "summary": "`os.path.getctime` should be replaced by `Path.stat().st_ctime`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH206",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-use-pathlib",
+      "name": "os-sep-split",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.281"
+        }
+      },
+      "summary": "Replace `.split(os.sep)` with `Path.parts`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH207",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-use-pathlib",
+      "name": "glob",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.281"
+        }
+      },
+      "summary": "Replace `{function}` with `Path.glob` or `Path.rglob`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH208",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-use-pathlib",
+      "name": "os-listdir",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.10.0"
+        }
+      },
+      "summary": "Use `pathlib.Path.iterdir()` instead."
+    },
+    {
+      "category": "correctness",
+      "code": "PTH210",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "invalid-pathlib-with-suffix",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.10.0"
+        }
+      },
+      "summary": "Invalid suffix passed to `.with_suffix()`"
+    },
+    {
+      "category": "pedantic",
+      "code": "PTH211",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-use-pathlib",
+      "name": "os-symlink",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.13.0"
+        }
+      },
+      "summary": "`os.symlink` should be replaced by `Path.symlink_to`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM101",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "duplicate-isinstance-call",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.212"
+        }
+      },
+      "summary": "Multiple `isinstance` calls for `{name}`, merge into a single call"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM102",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "collapsible-if",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Use a single `if` statement instead of nested `if` statements"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM103",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "needless-bool",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.214"
+        }
+      },
+      "summary": "Return the condition `{condition}` directly"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM105",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "suppressible-exception",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Use `contextlib.suppress({exception})` instead of `try`-`except`-`pass`"
+    },
+    {
+      "category": "correctness",
+      "code": "SIM107",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-simplify",
+      "name": "return-in-try-except-finally",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Don't use `return` in `try`-`except` and `finally`"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM108",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "if-else-block-instead-of-if-exp",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.213"
+        }
+      },
+      "summary": "Use ternary operator `{contents}` instead of `if`-`else`-block"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM109",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "compare-with-tuple",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.213"
+        }
+      },
+      "summary": "Use `{replacement}` instead of multiple equality comparisons"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM110",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "reimplemented-builtin",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Use `{replacement}` instead of `for` loop"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM112",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "uncapitalized-environment-variables",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.218"
+        }
+      },
+      "summary": "Use capitalized environment variable `{expected}` instead of `{actual}`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM113",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-simplify",
+      "name": "enumerate-for-loop",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.2.0"
+        }
+      },
+      "summary": "Use `enumerate()` for index variable `{index}` in `for` loop"
+    },
+    {
+      "category": "suspicious",
+      "code": "SIM114",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "if-with-same-arms",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.246"
+        }
+      },
+      "summary": "Combine `if` branches using logical `or` operator"
+    },
+    {
+      "category": "suspicious",
+      "code": "SIM115",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-simplify",
+      "name": "open-file-with-context-handler",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.219"
+        }
+      },
+      "summary": "Use a context manager for opening files"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM116",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "flake8-simplify",
+      "name": "if-else-block-instead-of-dict-lookup",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.250"
+        }
+      },
+      "summary": "Use a dictionary instead of consecutive `if` statements"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM117",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "multiple-with-statements",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Use a single `with` statement with multiple contexts instead of nested `with` statements"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM118",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "in-dict-keys",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.176"
+        }
+      },
+      "summary": "Use `key {operator} dict` instead of `key {operator} dict.keys()`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM201",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "negate-equal-op",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.213"
+        }
+      },
+      "summary": "Use `{left} != {right}` instead of `not {left} == {right}`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM202",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "negate-not-equal-op",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.213"
+        }
+      },
+      "summary": "Use `{left} == {right}` instead of `not {left} != {right}`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM208",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "double-negation",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.213"
+        }
+      },
+      "summary": "Use `{expr}` instead of `not (not {expr})`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM210",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "if-expr-with-true-false",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.214"
+        }
+      },
+      "summary": "Remove unnecessary `True if ... else False`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM211",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "if-expr-with-false-true",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.214"
+        }
+      },
+      "summary": "Use `not ...` instead of `False if ... else True`"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM212",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "if-expr-with-twisted-arms",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.214"
+        }
+      },
+      "summary": "Use `{expr_else} if {expr_else} else {expr_body}` instead of `{expr_body} if not {expr_else} else {expr_else}`"
+    },
+    {
+      "category": "correctness",
+      "code": "SIM220",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "expr-and-not-expr",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Use `False` instead of `{name} and not {name}`"
+    },
+    {
+      "category": "correctness",
+      "code": "SIM221",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "expr-or-not-expr",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Use `True` instead of `{name} or not {name}`"
+    },
+    {
+      "category": "correctness",
+      "code": "SIM222",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "expr-or-true",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.208"
+        }
+      },
+      "summary": "Use `{expr}` instead of `{replaced}`"
+    },
+    {
+      "category": "correctness",
+      "code": "SIM223",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "expr-and-false",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.208"
+        }
+      },
+      "summary": "Use `{expr}` instead of `{replaced}`"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM300",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "yoda-conditions",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.207"
+        }
+      },
+      "summary": "Yoda condition detected"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM401",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "if-else-block-instead-of-dict-get",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.219"
+        }
+      },
+      "summary": "Use `{contents}` instead of an `if` block"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM905",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "flake8-simplify",
+      "name": "split-static-string",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.10.0"
+        }
+      },
+      "summary": "Consider using a list literal instead of `str.{}`"
+    },
+    {
+      "category": "pedantic",
+      "code": "SIM910",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "dict-get-with-none-default",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.261"
+        }
+      },
+      "summary": "Use `{expected}` instead of `{actual}`"
+    },
+    {
+      "category": "complexity",
+      "code": "SIM911",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "flake8-simplify",
+      "name": "zip-dict-keys-and-values",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.2.0"
+        }
+      },
+      "summary": "Use `{expected}` instead of `{actual}`"
+    },
+    {
+      "category": "style",
+      "code": "UP001",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "useless-metaclass-type",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "`__metaclass__ = type` is implied"
+    },
+    {
+      "category": "style",
+      "code": "UP003",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "type-of-primitive",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Use `{}` instead of `type(...)`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP004",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "useless-object-inheritance",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Class `{name}` inherits from `object`"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP005",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "deprecated-unittest-alias",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "`{alias}` is deprecated, use `{target}`"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP006",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "non-pep585-annotation",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Use `{to}` instead of `{from}` for type annotation"
+    },
+    {
+      "category": "style",
+      "code": "UP007",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "non-pep604-annotation-union",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Use `X | Y` for type annotations"
+    },
+    {
+      "category": "style",
+      "code": "UP008",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "super-call-with-parameters",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Use `super()` instead of `super(__class__, self)`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP009",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "utf8-encoding-declaration",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "UTF-8 encoding declaration is unnecessary"
+    },
+    {
+      "category": "complexity",
+      "code": "UP010",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "unnecessary-future-import",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Unnecessary `__future__` import `{import}` for target Python version"
+    },
+    {
+      "category": "style",
+      "code": "UP011",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "lru-cache-without-parameters",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Unnecessary parentheses to `functools.lru_cache`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP012",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "unnecessary-encode-utf8",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Unnecessary call to `encode` as UTF-8"
+    },
+    {
+      "category": "pedantic",
+      "code": "UP013",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "convert-typed-dict-functional-to-class",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Convert `{name}` from `TypedDict` functional to class syntax"
+    },
+    {
+      "category": "style",
+      "code": "UP014",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "convert-named-tuple-functional-to-class",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Convert `{name}` from `NamedTuple` functional to class syntax"
+    },
+    {
+      "category": "pedantic",
+      "code": "UP015",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "redundant-open-modes",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.155"
+        }
+      },
+      "summary": "Unnecessary mode argument"
+    },
+    {
+      "category": "style",
+      "code": "UP017",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "datetime-timezone-utc",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.192"
+        }
+      },
+      "summary": "Use `datetime.UTC` alias"
+    },
+    {
+      "category": "style",
+      "code": "UP018",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "native-literals",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.193"
+        }
+      },
+      "summary": "Unnecessary `{literal_type}` call (rewrite as a literal)"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP019",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "typing-text-str-alias",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.195"
+        }
+      },
+      "summary": "`{}.Text` is deprecated, use `str`"
+    },
+    {
+      "category": "style",
+      "code": "UP020",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "open-alias",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.196"
+        }
+      },
+      "summary": "Use builtin `open`"
+    },
+    {
+      "category": "style",
+      "code": "UP021",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "replace-universal-newlines",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.196"
+        }
+      },
+      "summary": "`universal_newlines` is deprecated, use `text`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP022",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "replace-stdout-stderr",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.199"
+        }
+      },
+      "summary": "Prefer `capture_output` over sending `stdout` and `stderr` to `PIPE`"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP023",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "deprecated-c-element-tree",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.199"
+        }
+      },
+      "summary": "`cElementTree` is deprecated, use `ElementTree`"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP024",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "os-error-alias",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.206"
+        }
+      },
+      "summary": "Replace aliased errors with `OSError`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP025",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "unicode-kind-prefix",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.201"
+        }
+      },
+      "summary": "Remove unicode literals from strings"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP026",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "deprecated-mock-import",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.206"
+        }
+      },
+      "summary": "`mock` is deprecated, use `unittest.mock`"
+    },
+    {
+      "category": "pedantic",
+      "code": "UP027",
+      "fix": "Fix is not available.",
+      "fix_availability": "None",
+      "linter": "pyupgrade",
+      "name": "unpacked-list-comprehension",
+      "preview": false,
+      "status": {
+        "Removed": {
+          "since": "0.8.0"
+        }
+      },
+      "summary": "Replace unpacked list comprehension with a generator expression"
+    },
+    {
+      "category": "style",
+      "code": "UP028",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "yield-in-for-loop",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.210"
+        }
+      },
+      "summary": "Replace `yield` over `for` loop with `yield from`"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP029",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "unnecessary-builtin-import",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.211"
+        }
+      },
+      "summary": "Unnecessary builtin import: `{import}`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP030",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "format-literals",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.218"
+        }
+      },
+      "summary": "Use implicit references for positional format fields"
+    },
+    {
+      "category": "style",
+      "code": "UP031",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "printf-string-formatting",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.229"
+        }
+      },
+      "summary": "Use format specifiers instead of percent format"
+    },
+    {
+      "category": "complexity",
+      "code": "UP032",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "f-string",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.224"
+        }
+      },
+      "summary": "Use f-string instead of `format` call"
+    },
+    {
+      "category": "style",
+      "code": "UP033",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "lru-cache-with-maxsize-none",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.225"
+        }
+      },
+      "summary": "Use `@functools.cache` instead of `@functools.lru_cache(maxsize=None)`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP034",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "extraneous-parentheses",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.228"
+        }
+      },
+      "summary": "Avoid extraneous parentheses"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP035",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "deprecated-import",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.239"
+        }
+      },
+      "summary": "Import from `{target}` instead: {names}"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP036",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "outdated-version-block",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.240"
+        }
+      },
+      "summary": "Version block is outdated for minimum Python version"
+    },
+    {
+      "category": "correctness",
+      "code": "UP037",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "quoted-annotation",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.242"
+        }
+      },
+      "summary": "Remove quotes from type annotation"
+    },
+    {
+      "category": "pedantic",
+      "code": "UP038",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "non-pep604-isinstance",
+      "preview": false,
+      "status": {
+        "Removed": {
+          "since": "0.13.0"
+        }
+      },
+      "summary": "Use `X | Y` in `{}` call instead of `(X, Y)`"
+    },
+    {
+      "category": "style",
+      "code": "UP039",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "unnecessary-class-parentheses",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.273"
+        }
+      },
+      "summary": "Unnecessary parentheses after class definition"
+    },
+    {
+      "category": "complexity",
+      "code": "UP040",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "non-pep695-type-alias",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.0.283"
+        }
+      },
+      "summary": "Type alias `{name}` uses {type_alias_method} instead of the `type` keyword"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP041",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "timeout-error-alias",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "v0.2.0"
+        }
+      },
+      "summary": "Replace aliased errors with `TimeoutError`"
+    },
+    {
+      "category": "suspicious",
+      "code": "UP042",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "replace-str-enum",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.15.0"
+        }
+      },
+      "summary": "Class {name} inherits from both `str` and `enum.Enum`"
+    },
+    {
+      "category": "complexity",
+      "code": "UP043",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "unnecessary-default-type-args",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.8.0"
+        }
+      },
+      "summary": "Unnecessary default type arguments"
+    },
+    {
+      "category": "complexity",
+      "code": "UP044",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "non-pep646-unpack",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.10.0"
+        }
+      },
+      "summary": "Use `*` for unpacking"
+    },
+    {
+      "category": "style",
+      "code": "UP045",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "non-pep604-annotation-optional",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Use `X | None` for type annotations"
+    },
+    {
+      "category": "complexity",
+      "code": "UP046",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "non-pep695-generic-class",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Generic class `{name}` uses `Generic` subclass instead of type parameters"
+    },
+    {
+      "category": "complexity",
+      "code": "UP047",
+      "fix": "Fix is always available.",
+      "fix_availability": "Always",
+      "linter": "pyupgrade",
+      "name": "non-pep695-generic-function",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Generic function `{name}` should use type parameters"
+    },
+    {
+      "category": "style",
+      "code": "UP049",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "private-type-parameter",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.12.0"
+        }
+      },
+      "summary": "Generic {} uses private type parameters"
+    },
+    {
+      "category": "correctness",
+      "code": "UP050",
+      "fix": "Fix is sometimes available.",
+      "fix_availability": "Sometimes",
+      "linter": "pyupgrade",
+      "name": "useless-class-metaclass-type",
+      "preview": false,
+      "status": {
+        "Stable": {
+          "since": "0.13.0"
+        }
+      },
+      "summary": "Class `{name}` uses `metaclass=type`, which is redundant"
+    }
+  ],
+  "schema_version": 1
+}

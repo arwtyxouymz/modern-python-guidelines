@@ -1,0 +1,16 @@
+{
+  "name": "modern-python-cursor-marketplace",
+  "owner": {
+    "name": "Ryutaro Matsumoto"
+  },
+  "metadata": {
+    "description": "Ruff-backed modern Python guidance for coding agents",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "modern-python-guidelines",
+      "source": "./plugins/modern-python-guidelines"
+    }
+  ]
+}

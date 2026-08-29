@@ -1,0 +1,20 @@
+{
+  "name": "modern-python-codex-marketplace",
+  "interface": {
+    "displayName": "Modern Python Agent Plugins"
+  },
+  "plugins": [
+    {
+      "name": "modern-python-guidelines",
+      "source": {
+        "source": "local",
+        "path": "./plugins/modern-python-guidelines"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

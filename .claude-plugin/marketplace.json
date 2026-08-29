@@ -1,0 +1,17 @@
+{
+  "name": "modern-python-claude-marketplace",
+  "owner": {
+    "name": "Ryutaro Matsumoto"
+  },
+  "metadata": {
+    "description": "Ruff-backed modern Python guidance for coding agents",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "modern-python-guidelines",
+      "description": "Write modern Python for the project's target version.",
+      "source": "./plugins/modern-python-guidelines"
+    }
+  ]
+}

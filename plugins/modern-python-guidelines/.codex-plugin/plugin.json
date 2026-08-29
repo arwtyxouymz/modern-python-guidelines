@@ -1,0 +1,27 @@
+{
+  "name": "modern-python-guidelines",
+  "version": "0.1.0",
+  "description": "Helps coding agents write modern, idiomatic Python with version-aware Ruff guidance.",
+  "author": {
+    "name": "Ryutaro Matsumoto",
+    "url": "https://github.com/arwtyxouymz"
+  },
+  "homepage": "https://github.com/arwtyxouymz/modern-python-guidelines",
+  "repository": "https://github.com/arwtyxouymz/modern-python-guidelines",
+  "license": "MIT",
+  "keywords": ["python", "ruff", "pyupgrade", "coding-agent", "modernize"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Modern Python Guidelines",
+    "shortDescription": "Write modern Python for the project's target version.",
+    "longDescription": "Uses Ruff as a version-aware source of truth, retrieves guidance only for relevant diagnostics, and verifies generated Python changes.",
+    "developerName": "Ryutaro Matsumoto",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/arwtyxouymz/modern-python-guidelines",
+    "defaultPrompt": [
+      "Apply modern Python guidance to this project.",
+      "Refactor this Python code using safe modern idioms."
+    ]
+  }
+}
