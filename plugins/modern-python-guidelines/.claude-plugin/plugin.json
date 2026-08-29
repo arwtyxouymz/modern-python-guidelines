@@ -1,0 +1,14 @@
+{
+  "name": "modern-python-guidelines",
+  "description": "Helps Claude Code write modern, idiomatic Python with version-aware Ruff guidance.",
+  "version": "0.1.0",
+  "author": {
+    "name": "arwtyxouymz",
+    "url": "https://github.com/arwtyxouymz"
+  },
+  "homepage": "https://github.com/arwtyxouymz/modern-python-guidelines",
+  "repository": "https://github.com/arwtyxouymz/modern-python-guidelines",
+  "license": "MIT",
+  "keywords": ["python", "ruff", "pyupgrade", "guidelines", "modernize"],
+  "skills": "./skills/"
+}

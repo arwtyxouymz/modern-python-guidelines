@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Validate distribution
+        run: python scripts/validate_distribution.py
+      - name: Ruff check
+        run: |
+          RUFF_VERSION=$(cat plugins/modern-python-guidelines/skills/use-modern-python/scripts/RUFF_VERSION)
+          uvx --from "ruff==$RUFF_VERSION" ruff check .
+      - name: Ruff format
+        run: |
+          RUFF_VERSION=$(cat plugins/modern-python-guidelines/skills/use-modern-python/scripts/RUFF_VERSION)
+          uvx --from "ruff==$RUFF_VERSION" ruff format --check .
