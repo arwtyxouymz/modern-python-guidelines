@@ -18,13 +18,19 @@ jobs:
           python-version: "3.10"
       - name: Unit tests
         run: python -m unittest discover -s tests -v
+      - name: Real Ruff integration smoke test
+        run: |
+          requirement_file="plugins/modern-python-guidelines/skills/use-modern-python/scripts/ruff-fallback.txt"
+          ruff_requirement="$(tr -d '\n' < "$requirement_file")"
+          export MODERN_PYTHON_RUFF_COMMAND="uvx --from $ruff_requirement ruff"
+          python scripts/smoke_test.py
       - name: Validate distribution
         run: python scripts/validate_distribution.py
       - name: Ruff check
         run: |
-          RUFF_VERSION=$(cat plugins/modern-python-guidelines/skills/use-modern-python/scripts/RUFF_VERSION)
-          uvx --from "ruff==$RUFF_VERSION" ruff check .
+          RUFF_REQUIREMENT=$(tr -d '\n' < plugins/modern-python-guidelines/skills/use-modern-python/scripts/ruff-fallback.txt)
+          uvx --from "$RUFF_REQUIREMENT" ruff check .
       - name: Ruff format
         run: |
-          RUFF_VERSION=$(cat plugins/modern-python-guidelines/skills/use-modern-python/scripts/RUFF_VERSION)
-          uvx --from "ruff==$RUFF_VERSION" ruff format --check .
+          RUFF_REQUIREMENT=$(tr -d '\n' < plugins/modern-python-guidelines/skills/use-modern-python/scripts/ruff-fallback.txt)
+          uvx --from "$RUFF_REQUIREMENT" ruff format --check .

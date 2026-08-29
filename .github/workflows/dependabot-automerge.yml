@@ -1,0 +1,45 @@
+name: Dependabot auto-merge
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Squash a verified Dependabot pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          VERIFIED_HEAD: ${{ github.event.workflow_run.pull_requests[0].head.sha }}
+          VERIFIED_BASE: ${{ github.event.workflow_run.pull_requests[0].base.sha }}
+        run: |
+          set -euo pipefail
+          if [ -z "$PR_NUMBER" ]; then
+            exit 0
+          fi
+
+          author="$(gh api "repos/$REPOSITORY/pulls/$PR_NUMBER" --jq '.user.login')"
+          current_head="$(gh api "repos/$REPOSITORY/pulls/$PR_NUMBER" --jq '.head.sha')"
+          current_base="$(gh api "repos/$REPOSITORY/pulls/$PR_NUMBER" --jq '.base.sha')"
+          if [ "$author" != "dependabot[bot]" ] \
+            || [ "$current_head" != "$VERIFIED_HEAD" ] \
+            || [ "$current_base" != "$VERIFIED_BASE" ]; then
+            exit 0
+          fi
+
+          gh api \
+            --method PUT \
+            "repos/$REPOSITORY/pulls/$PR_NUMBER/merge" \
+            -f merge_method=squash \
+            -f sha="$VERIFIED_HEAD"

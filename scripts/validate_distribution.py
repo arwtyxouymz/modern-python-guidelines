@@ -75,16 +75,15 @@ def validate() -> None:
     require("name: use-modern-python" in skill_text, "skill name is missing")
     require("description:" in skill_text, "skill description is missing")
 
-    snapshot = load_json(ROOT / "generated" / "ruff-rules.json")
-    bundled_version = (
-        (PLUGIN / "skills" / "use-modern-python" / "scripts" / "RUFF_VERSION")
+    fallback_requirement = (
+        (PLUGIN / "skills" / "use-modern-python" / "scripts" / "ruff-fallback.txt")
         .read_text(encoding="utf-8")
         .strip()
     )
-    require(snapshot["ruff_version"] == bundled_version, "snapshot and fallback versions differ")
-    require(snapshot["profile"] == "modern", "snapshot must use the modern profile")
-    require(bool(snapshot["rules"]), "snapshot cannot be empty")
-    require(re.fullmatch(r"\d+\.\d+\.\d+", bundled_version) is not None, "invalid version")
+    require(
+        re.fullmatch(r"ruff==\d+\.\d+\.\d+", fallback_requirement) is not None,
+        "invalid Ruff fallback requirement",
+    )
 
     placeholder = "[" + "TODO:"
     for path in ROOT.rglob("*"):

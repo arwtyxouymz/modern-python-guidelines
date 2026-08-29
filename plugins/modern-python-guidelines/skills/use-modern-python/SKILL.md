@@ -65,6 +65,5 @@ a conservative modernization pass. `F401` cleans imports made unused by safe
 modernization fixes. Preview rules remain disabled unless the user or project
 explicitly opts into them.
 
-Do not call `catalog` during ordinary edits. It exports the whole selected rule
-inventory for maintenance and audits; diagnostics plus targeted `explain` calls
-provide the intended progressive disclosure.
+Diagnostics plus targeted `explain` calls provide the intended progressive
+disclosure; do not load a complete rule inventory during ordinary edits.

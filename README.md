@@ -1,5 +1,10 @@
 # Modern Python Guidelines
 
+[![CI](https://github.com/arwtyxouymz/modern-python-guidelines/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/arwtyxouymz/modern-python-guidelines/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Powered by Ruff](https://img.shields.io/badge/Powered%20by-Ruff-D7FF64?logo=ruff&logoColor=261230)](https://docs.astral.sh/ruff/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > [!NOTE]
 > This project is strongly inspired by
 > [JetBrains/go-modern-guidelines](https://github.com/JetBrains/go-modern-guidelines).
@@ -122,20 +127,15 @@ sh <skill-dir>/scripts/run-tool.sh fix src/example.py
 & <skill-dir>\scripts\run-tool.ps1 probe --file src\example.py
 ```
 
-`catalog` exports a concise JSON catalog of the selected stable Ruff rules. It is
-intended for auditing and repository maintenance, not as context to load before
-every edit.
+## Automatic dependency updates
 
-## Automatic rule updates
+The bundled fallback is pinned as a standard pip requirement in
+`ruff-fallback.txt`. Dependabot watches that pin and the GitHub Actions used by
+this repository. Its pull requests are squash-merged automatically only after
+the complete CI workflow, including a real Ruff integration smoke test, passes.
 
-The weekly `Sync Ruff rule snapshot` workflow runs the latest Ruff, regenerates
-[`generated/ruff-rules.json`](generated/ruff-rules.json), updates the bundled
-fallback version, and opens a pull request when upstream guidance changes.
-Humans review the upstream delta rather than manually transcribing rules.
-
-Runtime checks still use the target project's Ruff when available. The snapshot
-is an auditable inventory and fallback-version update signal, not a competing
-rule engine.
+Runtime checks still prefer the target project's Ruff, so an automatically
+updated fallback never overrides a project's locked toolchain.
 
 ## Development
 
@@ -143,9 +143,9 @@ rule engine.
 python -m unittest discover -s tests -v
 python scripts/validate_distribution.py
 
-RUFF_VERSION=$(cat plugins/modern-python-guidelines/skills/use-modern-python/scripts/RUFF_VERSION)
-uvx --from "ruff==$RUFF_VERSION" ruff check .
-uvx --from "ruff==$RUFF_VERSION" ruff format --check .
+RUFF_REQUIREMENT=$(cat plugins/modern-python-guidelines/skills/use-modern-python/scripts/ruff-fallback.txt)
+uvx --from "$RUFF_REQUIREMENT" ruff check .
+uvx --from "$RUFF_REQUIREMENT" ruff format --check .
 ```
 
 ## License

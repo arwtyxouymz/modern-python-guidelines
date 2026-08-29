@@ -38,13 +38,6 @@ if args == ["--version"]:
 elif args[:2] == ["check", "--show-settings"]:
     print("linter.unresolved_target_version = 3.12")
     print("linter.preview = disabled")
-elif args[:2] == ["rule", "--all"]:
-    print(json.dumps([
-        {"code": "UP001", "name": "up", "linter": "pyupgrade", "summary": "upgrade", "fix": "Fix is always available.", "fix_availability": "Always", "preview": False, "status": {"Stable": {"since": "v1"}}, "category": "style"},
-        {"code": "FURB001", "name": "furb", "linter": "Refurb", "summary": "refurbish", "fix": "Fix is not available.", "fix_availability": "None", "preview": False, "status": {"Stable": {"since": "v1"}}, "category": "style"},
-        {"code": "SIM001", "name": "preview", "linter": "simplify", "summary": "preview", "fix": "Fix is not available.", "fix_availability": "None", "preview": True, "status": {"Preview": {"since": "v1"}}, "category": "style"},
-        {"code": "E501", "name": "other", "linter": "pycodestyle", "summary": "other", "fix": "Fix is not available.", "fix_availability": "None", "preview": False, "status": {"Stable": {"since": "v1"}}, "category": "style"},
-    ]))
 elif args and args[0] == "rule":
     print(json.dumps({"code": args[1], "summary": "details"}))
 elif args and args[0] == "check":
@@ -107,11 +100,6 @@ class ModernPythonToolTests(unittest.TestCase):
         payload = json.loads(result.stdout)
         self.assertEqual([rule["code"] for rule in payload["rules"]], ["UP001", "FURB001"])
 
-    def test_catalog_filters_prefixes_and_preview(self) -> None:
-        result = self.run_tool("catalog", "--profile", "modern")
-        payload = json.loads(result.stdout)
-        self.assertEqual([rule["code"] for rule in payload["rules"]], ["FURB001", "UP001"])
-
     def test_invalid_rule_code_fails(self) -> None:
         result = self.run_tool("explain", "not-a-code")
         self.assertEqual(result.returncode, 2)
@@ -135,6 +123,9 @@ class ModernPythonToolTests(unittest.TestCase):
             '[tool.pixi.workspace]\nname = "example"\n', encoding="utf-8"
         )
         self.assertTrue(modern_python.is_pixi_project(self.directory))
+
+    def test_bundled_ruff_requirement_is_exactly_pinned(self) -> None:
+        self.assertRegex(modern_python.pinned_ruff_version(), r"^\d+\.\d+\.\d+$")
 
 
 if __name__ == "__main__":

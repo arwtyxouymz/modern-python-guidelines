@@ -4,3 +4,14 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: pip
+    directory: /plugins/modern-python-guidelines/skills/use-modern-python/scripts
+    schedule:
+      interval: weekly
+    allow:
+      - dependency-name: ruff

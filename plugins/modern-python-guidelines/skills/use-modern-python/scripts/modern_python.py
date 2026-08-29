@@ -14,7 +14,6 @@ import sys
 from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
 
 PROFILES = {
     "core": ("UP", "FURB", "F401"),
@@ -57,10 +56,11 @@ def find_project_root(start: Path) -> Path:
 
 
 def pinned_ruff_version() -> str:
-    value = (Path(__file__).with_name("RUFF_VERSION")).read_text(encoding="utf-8").strip()
-    if not re.fullmatch(r"\d+\.\d+\.\d+", value):
-        raise ToolError(f"invalid bundled Ruff version: {value!r}")
-    return value
+    value = (Path(__file__).with_name("ruff-fallback.txt")).read_text(encoding="utf-8").strip()
+    match = re.fullmatch(r"ruff==(\d+\.\d+\.\d+)", value)
+    if match is None:
+        raise ToolError(f"invalid bundled Ruff requirement: {value!r}")
+    return match.group(1)
 
 
 def executable_in_venv(root: Path) -> Path | None:
@@ -217,7 +217,7 @@ def command_check(args: argparse.Namespace, runner: Runner, *, fix: bool) -> Non
 
 
 def command_explain(args: argparse.Namespace, runner: Runner) -> None:
-    rules: list[dict[str, Any]] = []
+    rules: list[dict[str, object]] = []
     for code in dict.fromkeys(args.codes):
         normalized = code.strip().upper()
         if not RULE_CODE.fullmatch(normalized):
@@ -231,45 +231,7 @@ def command_explain(args: argparse.Namespace, runner: Runner) -> None:
     print_json({"ruff_version": runner.version.removeprefix("ruff "), "rules": rules})
 
 
-def command_catalog(args: argparse.Namespace, runner: Runner) -> None:
-    result = invoke_ruff(runner, ("rule", "--all", "--output-format", "json"))
-    try:
-        catalog = json.loads(result.stdout)
-    except json.JSONDecodeError as exc:
-        raise ToolError(f"Ruff returned invalid rule catalog JSON: {exc}") from exc
-
-    prefixes = selected_rules(args)
-    fields = (
-        "code",
-        "name",
-        "linter",
-        "summary",
-        "fix",
-        "fix_availability",
-        "preview",
-        "status",
-        "category",
-    )
-    rules = [
-        {field: rule.get(field) for field in fields}
-        for rule in catalog
-        if str(rule.get("code", "")).startswith(prefixes)
-        and (args.include_preview or not rule.get("preview", False))
-    ]
-    rules.sort(key=lambda rule: str(rule["code"]))
-    print_json(
-        {
-            "schema_version": 1,
-            "ruff_version": runner.version.removeprefix("ruff "),
-            "profile": args.profile,
-            "rule_prefixes": list(prefixes),
-            "include_preview": args.include_preview,
-            "rules": rules,
-        }
-    )
-
-
-def print_json(value: Any) -> None:
+def print_json(value: object) -> None:
     print(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False))
 
 
@@ -304,14 +266,6 @@ def build_parser() -> argparse.ArgumentParser:
     explain = subparsers.add_parser("explain", help="Return full documentation for rule codes")
     explain.add_argument("codes", nargs="+", help="Ruff rule codes from check output")
 
-    catalog = subparsers.add_parser("catalog", help="Export the selected Ruff rule inventory")
-    add_rule_options(catalog)
-    catalog.add_argument(
-        "--include-preview",
-        action="store_true",
-        help="Include preview rules in the exported inventory",
-    )
-
     return parser
 
 
@@ -327,8 +281,6 @@ def main(argv: Sequence[str] | None = None) -> int:
             command_check(args, runner, fix=True)
         elif args.command == "explain":
             command_explain(args, runner)
-        elif args.command == "catalog":
-            command_catalog(args, runner)
         else:  # pragma: no cover - argparse prevents this
             raise ToolError(f"unsupported command: {args.command}")
     except ToolError as exc:
