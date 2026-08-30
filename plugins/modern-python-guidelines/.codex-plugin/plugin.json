@@ -1,6 +1,6 @@
 {
   "name": "modern-python-guidelines",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Helps coding agents write modern, idiomatic Python with version-aware Ruff guidance.",
   "author": {
     "name": "arwtyxouymz",
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Modern Python Guidelines",
     "shortDescription": "Write modern Python for the project's target version.",
-    "longDescription": "Uses Ruff as a version-aware source of truth, retrieves guidance only for relevant diagnostics, and verifies generated Python changes.",
+    "longDescription": "Uses Ruff as a version-aware source of truth, reads compact applicable guidance before editing, and verifies generated Python changes.",
     "developerName": "arwtyxouymz",
     "category": "Developer Tools",
     "capabilities": ["Read", "Write"],

@@ -1,6 +1,6 @@
 [project]
 name = "modern-python-guidelines"
-version = "0.1.0"
+version = "0.2.0"
 description = "Ruff-backed modern Python guidance for AI coding agents"
 requires-python = ">=3.10"
 license = "MIT"

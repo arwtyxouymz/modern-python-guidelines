@@ -11,7 +11,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "plugins" / "modern-python-guidelines"
 PLUGIN_NAME = "modern-python-guidelines"
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 PUBLISHER = "arwtyxouymz"
 
 
@@ -74,6 +74,12 @@ def validate() -> None:
     require(skill_text.startswith("---\n"), "skill frontmatter is missing")
     require("name: use-modern-python" in skill_text, "skill name is missing")
     require("description:" in skill_text, "skill description is missing")
+    require("list --file" in skill_text, "skill must load guidance before editing")
+    require("--allow-stale" in skill_text, "skill must document stale Ruff consent")
+    require(
+        not (PLUGIN / "skills" / "use-modern-python" / "ruff-rules.json").exists(),
+        "generated rule JSON must not be committed",
+    )
 
     fallback_requirement = (
         (PLUGIN / "skills" / "use-modern-python" / "scripts" / "ruff-fallback.txt")

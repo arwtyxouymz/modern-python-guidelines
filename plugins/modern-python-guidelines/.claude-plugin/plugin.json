@@ -1,7 +1,7 @@
 {
   "name": "modern-python-guidelines",
   "description": "Helps Claude Code write modern, idiomatic Python with version-aware Ruff guidance.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "arwtyxouymz",
     "url": "https://github.com/arwtyxouymz"

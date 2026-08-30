@@ -14,11 +14,11 @@ hand-maintained rule database.
 
 The plugin makes an agent:
 
-1. resolve the project's Python target through Ruff,
-2. check edited code with version-aware modernization rules,
-3. retrieve full documentation only for diagnostics that actually occur,
-4. apply safe fixes or make a reasoned manual change, and
-5. run the project's normal verification afterward.
+1. resolve the target file's Ruff runner, Python version, preview mode, and ignores,
+2. read a compact list of applicable modernization guidance **before editing**,
+3. retrieve full documentation only for rule IDs relevant to the planned code,
+4. write the code, then check it with a broader modern-Python profile, and
+5. apply safe fixes and run the project's normal verification afterward.
 
 Ruff remains the source of truth. The bundled tool does not scrape Python release
 notes, rewrite Ruff's rules, or maintain a second set of recommendations.
@@ -28,8 +28,25 @@ notes, rewrite Ruff's rules, or maintain a second set of recommendations.
 Ruff already maintains machine-readable rules derived from projects such as
 `pyupgrade`, `refurb`, `flake8-simplify`, `flake8-use-pathlib`, and `flynt`. It
 also understands the project's `target-version` or `requires-python` setting.
-The plugin uses Ruff's diagnostics as a retrieval step, so the agent sees only
-guidance relevant to the code it touched.
+Before editing, the plugin reads Ruff's runtime JSON metadata, extracts Ruff's own
+Python examples into a temporary directory, and checks them in one batch against
+the target version. No generated rule JSON is committed to this repository.
+
+The resulting list has two groups:
+
+- **Baseline**: Ruff's documented examples diagnose under the resolved target.
+- **Conditional**: the same guidance becomes available with postponed annotations,
+  such as `from __future__ import annotations`.
+
+This executable-example check is a verified baseline, not a proof of every possible
+configuration. The post-edit check remains necessary and can surface rules whose
+behavior depends on the actual code or other Ruff settings.
+
+Ruff's current rule status is authoritative: Stable rules are considered, Preview
+rules require project or command-line opt-in, and Removed rules are excluded. When
+the project Ruff is older than the bundled reference, the tool compares actual
+target-compatible rule sets in both directions so newly available and retired
+guidance are detected without treating a version-number difference alone as stale.
 
 Two profiles are available:
 
@@ -42,6 +59,11 @@ Preview rules are excluded unless explicitly requested. `fix` applies Ruff's saf
 fixes only; unsafe fixes require an explicit flag and should be reviewed for
 behavior changes. `F401` is included because modernization frequently makes old
 compatibility imports unused.
+
+Project `lint.ignore` and matching `per-file-ignores` are preserved by both the
+pre-edit list and post-edit checks, even though a plain Ruff CLI `--select` would
+otherwise take precedence over global ignores. Per-file target versions are also
+resolved for the requested path rather than inferred from the base target alone.
 
 ## Requirements
 
@@ -57,6 +79,30 @@ tool runs `pixi run ruff`. For a non-default Pixi environment, set an explicit
 command such as `MODERN_PYTHON_RUFF_COMMAND="pixi run --environment dev ruff"`.
 The fallback is cached outside the target project and does not add dependencies
 to it.
+
+Runner provenance is reported as `project`, `ambient`, or `bundled`. Discovery is
+anchored at the requested file, which keeps nested projects and monorepos from
+accidentally using the caller's working-directory configuration. If a detected
+project runner is unavailable and another runner is selected, the result includes a
+warning instead of silently presenting it as the project toolchain.
+
+When an older project Ruff is in use, `list` may invoke the pinned Ruff through
+`uvx` or `pipx` only to compare rule capabilities. That can cause a one-time cached
+download. If the comparison is unavailable offline, the project Ruff remains the
+source of truth and the tool continues with an explicit warning.
+
+## Ruff update consent
+
+`list` exits with status 3 only when the selected Ruff cannot provide the required
+metadata or when comparison finds a material applicable-rule difference. The agent
+must then ask whether to update Ruff; it never edits dependencies or lockfiles on
+its own.
+
+If approved, the agent updates Ruff through the project's existing manager, such as
+Pixi, uv, Poetry, PDM, or pre-commit, and reruns `list`. If declined, it reruns with
+`--allow-stale` and continues with the project's Ruff for that task. Very old Ruff
+releases without machine-readable rule metadata degrade safely to the resolved
+target plus the post-edit check.
 
 ## Installation
 
@@ -118,14 +164,20 @@ The agent normally calls these through the skill wrappers:
 
 ```bash
 # macOS / Linux
+sh <skill-dir>/scripts/run-tool.sh list --file src/example.py
+sh <skill-dir>/scripts/run-tool.sh list --file src/new_file.py --target-version py312
 sh <skill-dir>/scripts/run-tool.sh probe --file src/example.py
 sh <skill-dir>/scripts/run-tool.sh check src/example.py
-sh <skill-dir>/scripts/run-tool.sh explain UP045
+sh <skill-dir>/scripts/run-tool.sh explain --file src/example.py UP045
 sh <skill-dir>/scripts/run-tool.sh fix src/example.py
 
 # Windows PowerShell
-& <skill-dir>\scripts\run-tool.ps1 probe --file src\example.py
+& <skill-dir>\scripts\run-tool.ps1 list --file src\example.py
 ```
+
+The agent reads the complete compact `list` output, requests `explain` only for IDs
+that could affect the planned change, and then starts editing. `probe` is a debugging
+command for runner and target resolution; it is not the pre-edit guidance step.
 
 ## Automatic dependency updates
 
@@ -136,6 +188,11 @@ the complete CI workflow, including a real Ruff integration smoke test, passes.
 
 Runtime checks still prefer the target project's Ruff, so an automatically
 updated fallback never overrides a project's locked toolchain.
+
+CI validates metadata extraction, documented examples, postponed-annotation cases,
+Python 3.8 through 3.14 targets, per-file targeting, project ignores, and the full
+`list → explain → fix → check` flow. This makes a Dependabot fallback update
+auto-mergeable without introducing a hand-maintained rule catalog.
 
 ## Development
 
