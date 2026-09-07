@@ -4,6 +4,7 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Powered by Ruff](https://img.shields.io/badge/Powered%20by-Ruff-D7FF64?logo=ruff&logoColor=261230)](https://docs.astral.sh/ruff/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![skills.sh](https://skills.sh/b/arwtyxouymz/modern-python-guidelines)](https://skills.sh/arwtyxouymz/modern-python-guidelines)
 
 > [!NOTE]
 > This project is strongly inspired by
