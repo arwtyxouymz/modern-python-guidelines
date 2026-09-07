@@ -155,8 +155,10 @@ Inside Junie CLI:
 For clients supported by `skills.sh`:
 
 ```bash
-npx skills add arwtyxouymz/modern-python-guidelines --skill use-modern-python
+npx skills add arwtyxouymz/modern-python-guidelines --full-depth --skill use-modern-python
 ```
+
+`--full-depth` discovers the skill inside the plugin payload.
 
 ## Tool commands
 
